@@ -18,4 +18,5 @@ spring:
     generate-ddl: true
 
 server:
-  port: 8081
+  address: 172.20.1.96
+  port: 8090
