@@ -1,6 +1,6 @@
 node {
     def WORKSPACE = "/var/lib/jenkins/workspace/spring-technica-test"
-    def dockerImageTag = "spring-technica-test${env.BUILD_NUMBER}"
+    def dockerImageTag = "spring-technica-test${BUILD_NUMBER}"
 
     try{
 //          notifyBuild('STARTED')
@@ -12,13 +12,13 @@ node {
                 branch: 'master'
          }
           stage('Build docker') {
-                 dockerImage = docker.build("spring-technica-test:${env.BUILD_NUMBER}")
+                 dockerImage = docker.build("spring-technica-test:${BUILD_NUMBER}")
           }
 
           stage('Deploy docker'){
                   echo "Docker Image Tag Name: ${dockerImageTag}"
                   sh "docker stop spring-technica-test || true && docker rm spring-technica-test || true"
-                  sh "docker run --name spring-technica-test -d -p 9001:8081 spring-technica-test:${env.BUILD_NUMBER}"
+                  sh "docker run --name spring-technica-test -d -p 9001:8081 spring-technica-test:${BUILD_NUMBER}"
           }
     }catch(e){
 //         currentBuild.result = "FAILED"
@@ -37,12 +37,12 @@ def notifyBuild(String buildStatus = 'STARTED'){
   def colorCode = '#FF0000'
   def now = new Date()
   // message
-  def subject = "${buildStatus}, Job: ${env.JOB_NAME} FRONTEND - Deployment Sequence: [${env.BUILD_NUMBER}] "
-  def summary = "${subject} - Check On: (${env.BUILD_URL}) - Time: ${now}"
+  def subject = "${buildStatus}, Job: ${JOB_NAME} FRONTEND - Deployment Sequence: [${BUILD_NUMBER}] "
+  def summary = "${subject} - Check On: (${BUILD_URL}) - Time: ${now}"
   def subject_email = "Spring boot Deployment"
   def details = """<p>${buildStatus} JOB </p>
-    <p>Job: ${env.JOB_NAME} - Deployment Sequence: [${env.BUILD_NUMBER}] - Time: ${now}</p>
-    <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME}</a>"</p>"""
+    <p>Job: ${JOB_NAME} - Deployment Sequence: [${BUILD_NUMBER}] - Time: ${now}</p>
+    <p>Check console output at "<a href="${BUILD_URL}">${JOB_NAME}</a>"</p>"""
 
 
   // Email notification
