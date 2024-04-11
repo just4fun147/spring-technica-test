@@ -1,4 +1,4 @@
-FROM maven:3-jdk-17-alpine AS build
+FROM openjdk:17-jdk-alpine AS build
 WORKDIR /opt/app
 
 COPY ./ /opt/app
