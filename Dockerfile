@@ -1,0 +1,7 @@
+FROM openjdk:17-alpine
+WORKDIR /app
+
+COPY target/spring-technica-test-0.0.1-SNAPSHOT.jar /app/spring-technica-test.jar
+
+EXPOSE 9100
+CMD ["java", "-jar", "-Xms256m", "-Xmx1G", "-Dspring.profiles.active=config", "spring-technica-test.jar"]

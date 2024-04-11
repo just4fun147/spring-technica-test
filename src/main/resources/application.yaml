@@ -17,8 +17,3 @@ spring:
     show_sql: true
     generate-ddl: true
 
-server:
-  address: 172.20.1.96
-  port: 8090
-
-#  test
