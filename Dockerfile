@@ -1,6 +1,10 @@
-FROM openjdk:17-alpine
+FROM maven:3-jdk-17-alpine AS build
 WORKDIR /opt/app
 
+COPY ./ /opt/app
+RUN mvn clean install -DskipTests
+
+FROM openjdk:17-jdk-apline
 COPY /opt/apptarget/spring-technica-test-0.0.1-SNAPSHOT.jar spring-technica-test.jar
 
 EXPOSE 9100
