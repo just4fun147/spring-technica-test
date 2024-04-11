@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-alpine AS build
+FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 COPY target/*.jar spring-technica-test.jar
