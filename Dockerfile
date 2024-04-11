@@ -2,7 +2,6 @@ FROM openjdk:17-alpine AS build
 WORKDIR /app
 
 COPY ./ /app
-RUN mvn clean install -DskipTests
 
 COPY target/*.jar /app/spring-technica-test.jar
 
