@@ -16,7 +16,7 @@ pipeline {
          }
          stage("Build Maven") {
               steps {
-                    git url: 'https://github.com/just4fun147/spring-technica-test',
+                    git url: 'https://github.com/just4fun147/spring-technica-test.git',
                         credentialsId: 'github',
                         branch: 'master'
                     withMaven {
