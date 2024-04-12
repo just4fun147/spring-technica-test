@@ -9,11 +9,11 @@ pipeline {
     stages{
         stage("Checkout from SCM"){
             steps {
-                git branch: 'master', credentialsId: 'github', url: 'https://github.com/just4fun147/spring-technica-tes'
+                git branch: 'master', credentialsId: 'github', url: 'https://github.com/just4fun147/spring-technica-test'
             }
         }
         stage("Clone Project") {
-                    git url: 'https://github.com/just4fun147/spring-technica-tes.git',
+                    git url: 'https://github.com/just4fun147/spring-technica-test.git',
                         credentialsId: 'github',
                         branch: 'master'
                  }
