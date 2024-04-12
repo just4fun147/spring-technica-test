@@ -24,6 +24,16 @@ pipeline {
                      sh "mvn clean package -DskipTests"
                 }
          }
+         stage("Sonarqube Analysis") {
+             steps {
+                 script {
+                     withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') {
+                         sh "mvn sonar:sonar"
+                     }
+                 }
+             }
+
+         }
          stage("Build Image") {
              steps {
                  script{
