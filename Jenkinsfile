@@ -5,11 +5,6 @@ pipeline {
     }
 
     stages{
-        stage('Clone Repo') {
-                    git url: 'https://github.com/just4fun147/spring-technica-test.git',
-                        credentialsId: 'github',
-                        branch: 'main'
-         }
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/just4fun147/spring-technica-test']]])
