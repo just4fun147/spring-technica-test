@@ -9,7 +9,7 @@ node {
             // Get some code from a GitHub repository
             git url: 'https://github.com/just4fun147/spring-technica-test.git',
                 credentialsId: 'github',
-                branch: 'main'
+                branch: 'master'
          }
           stage('Build docker') {
                  dockerImage = docker.build("spring-technica-test:${env.BUILD_NUMBER}")
