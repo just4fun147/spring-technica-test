@@ -4,7 +4,7 @@ pipeline {
         skipDefaultCheckout(true)
     }
     tools{
-        maven 'maven_3_5_0'
+        maven 'maven'
     }
     stages{
         stage('Clone Project') {
