@@ -9,7 +9,7 @@ pipeline {
     stages{
         stage("Checkout from SCM"){
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/just4fun147/spring-technica-tes'
+                git branch: 'master', credentialsId: 'github', url: 'https://github.com/just4fun147/spring-technica-tes'
             }
         }
         stage('Clone Project') {
