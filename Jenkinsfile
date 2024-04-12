@@ -23,6 +23,12 @@ pipeline {
               steps {
                      sh "mvn clean package -DskipTests"
                 }
-          }
+         }
+         stage("Build Image") {
+             steps {
+                dockerImage = docker.build("spring-technica-testy:${BUILD_NUMBER}")
+             }
+         }
+
     }
 }
