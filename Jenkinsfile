@@ -13,11 +13,12 @@ pipeline {
             }
         }
         stage("Clone Project") {
-                    git url: 'https://github.com/just4fun147/spring-technica-test.git',
-                        credentialsId: 'github',
-                        branch: 'master'
-                 }
-
+             steps{
+                 git url: 'https://github.com/just4fun147/spring-technica-test.git',
+                                         credentialsId: 'github',
+                                         branch: 'master'
+                  }
+             }
          stage("Build Maven") {
               steps {
                      sh "mvn clean package"
