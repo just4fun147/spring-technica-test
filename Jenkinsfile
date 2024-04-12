@@ -11,11 +11,7 @@ pipeline {
             }
         }
         stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t just4fun147/spring-technica-test .'
-                }
-            }
+            dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
         }
         stage('Push image to Hub'){
             steps{
