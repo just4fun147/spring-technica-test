@@ -1,14 +1,17 @@
 pipeline {
     agent any
+    options{
+        skipDefaultCheckout(true)
+    }
     tools{
         maven 'maven_3_5_0'
     }
     stages{
         stage('Clone Project') {
-                git url: 'https://github.com/just4fun147/spring-technica-test.git',
-                    credentialsId: 'github',
-                    branch: 'master'
-             }
+            git url: 'https://github.com/just4fun147/spring-technica-test.git',
+                credentialsId: 'github',
+                branch: 'master'
+         }
          stage("Build Maven") {
               steps {
                     git url: 'https://github.com/just4fun147/spring-technica-test',
