@@ -11,6 +11,14 @@ node {
                 credentialsId: 'github',
                 branch: 'master'
          }
+          stage("Build") {
+               steps {
+                 git url: 'https://github.com/just4fun147/spring-technica-test.git'
+                 withMaven {
+                   sh "mvn clean verify"
+                 } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+               }
+             }
           stage('Build docker') {
                  dockerImage = docker.build("spring-technica-test:${env.BUILD_NUMBER}")
           }
