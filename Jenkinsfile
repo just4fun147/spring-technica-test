@@ -9,12 +9,12 @@ pipeline {
     stages{
         stage("Checkout from SCM"){
             steps {
-                git branch: 'master', credentialsId: 'github', url: 'https://github.com/just4fun147/spring-technica-test'
+                git branch: 'master', credentialsId: 'github', url: '${GIT_URL}'
             }
         }
         stage("Clone Project") {
              steps{
-                 git url: 'https://github.com/just4fun147/spring-technica-test.git',
+                 git url: '${GIT_URL}',
                                          credentialsId: 'github',
                                          branch: 'master'
                   }
@@ -33,6 +33,15 @@ pipeline {
                     sh 'docker push just4fun147/spring-technica-test'
                  }
              }
+         }
+
+         stage("Trivy Scan") {
+             steps {
+                 script {
+                    sh ('docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image just4fun147/spring-technica-test --no-progress --scanners vuln  --exit-code 0 --severity HIGH,CRITICAL --format table')
+                 }
+             }
+
          }
 
     }
