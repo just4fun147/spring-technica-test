@@ -7,8 +7,8 @@ node {
          stage('Clone Repo') {
             // for display purposes
             // Get some code from a GitHub repository
-            git url: 'https://gitlab.com/gpranataAsyst/springboot-demodeploy.git',
-                credentialsId: 'springdeploy-user',
+            git url: 'https://github.com/just4fun147/spring-technica-test.git',
+                credentialsId: 'github',
                 branch: 'main'
          }
           stage('Build docker') {
