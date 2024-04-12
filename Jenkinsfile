@@ -1,4 +1,7 @@
 pipeline {
+    def WORKSPACE = "/var/lib/jenkins/workspace/spring-technica-test"
+    def dockerImageTag = "spring-technica-test${BUILD_NUMBER}"
+
     agent any
     tools{
         maven 'maven'
@@ -11,7 +14,7 @@ pipeline {
             }
         }
         stage('Build docker image'){
-            dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
+            dockerImage = docker.build("spring-technica-test:${BUILD_NUMBER}")
         }
         stage('Push image to Hub'){
             steps{
