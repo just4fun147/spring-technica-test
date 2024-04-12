@@ -27,6 +27,7 @@ pipeline {
          stage("Build Image") {
              steps {
                  script{
+                    sh 'docker build -t just4fun147/spring-technica-test .'
                     withCredentials([string(credentialsId: 'docker', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u just4fun147 -p ${dockerhubpwd}'}
                     sh 'docker push just4fun147/spring-technica-test'
