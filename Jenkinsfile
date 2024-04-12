@@ -7,7 +7,6 @@ pipeline {
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/just4fun147/spring-technica-test']]])
-                sh 'mvn clean install'
             }
         }
         stage('Build docker image'){
