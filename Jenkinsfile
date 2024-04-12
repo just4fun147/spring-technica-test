@@ -26,7 +26,11 @@ pipeline {
          }
          stage("Build Image") {
              steps {
-                dockerImage = docker.build("spring-technica-testy:${BUILD_NUMBER}")
+                 script{
+                    withCredentials([string(credentialsId: 'docker', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u just4fun147 -p ${dockerhubpwd}'}
+                    sh 'docker push just4fun147/spring-technica-test'
+                 }
              }
          }
 
